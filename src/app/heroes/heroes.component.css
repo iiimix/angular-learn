@@ -3,11 +3,17 @@ p {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 4em;
   color: #9058a8;
+  text-align: center;
   /* animation: shake infinite 1s linear alternate; */
 }
 
 p:hover {
   animation: d3Shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @keyframes shake {
@@ -49,7 +55,7 @@ p:hover {
 
 /* HeroesComponent's private CSS styles */
 .selected {
-  background-color: #CFD8DC !important;
+  background-color: #65b8dc !important;
   color: white;
 }
 .heroes {

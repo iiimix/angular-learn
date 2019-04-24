@@ -2,18 +2,37 @@
   heroes component
 </p>
 
-<h2>{{hero.name | uppercase}} 信息</h2>
-<div><span>id: </span>{{hero.id}}</div>
-<div>
-  <label for="">name: 
-    <input [(ngModel)]="hero.name" placeholder="name" >
-  </label>
+<div class="wrapper">
+  <h2>{{hero.name | uppercase}} 信息</h2>
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <label for="">name: 
+      <input [(ngModel)]="hero.name" placeholder="name" >
+    </label>
+  </div>
 </div>
 
+<div class="wrapper">
+  <h2>王者荣耀英雄榜</h2>
+  <ul class="heroes">
+    <li *ngFor="let item of heroes"
+        [class.selected.in]='item===selectedHero'
+        [ngClass]='currentClasses'
+        (click)="onSelect(item)">
+      <span class="badge">{{item.id}}</span>{{item.name}}
+    </li>
+  </ul>
+  <div *ngIf="selectedHero">
+    <h2>{{selectedHero.name | uppercase}} 信息</h2>
+    <div><span>id: </span>{{selectedHero.id}}</div>
+    <div>
+      <label for="">name: 
+        <input [(ngModel)]="selectedHero.name" placeholder="name" >
+      </label>
+    </div>
+  </div>
+</div>
 
-<h2>王者荣耀英雄榜</h2>
-<ul class="heroes">
-  <li *ngFor="let item of heroes">
-    <span class="badge">{{item.id}}</span>{{item.name}}
-  </li>
-</ul>
+<input (change)="onChange()" type="checkbox" name="condition" id="" [(ngModel)]="condition1">className1
+<input (change)="onChange()" type="checkbox" name="condition" id="" [(ngModel)]="condition2">className2
+<input (change)="onChange()" type="checkbox" name="condition" id="" [(ngModel)]="condition3">className3

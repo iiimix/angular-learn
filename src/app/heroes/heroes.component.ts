@@ -14,12 +14,38 @@ export class HeroesComponent implements OnInit {
     name: 'Michael'
   };
 
+  // selectedHero: Hero = {id:0, name: ''};
+  selectedHero: Hero;
+
   heroes = HEROES_Array
   
+  currentClasses: {}
+  condition1
+  condition2
+  condition3
+
   constructor() { }
 
   ngOnInit() {
-    console.log(HEROES_Array)
+    console.log(HEROES_Array);
+    this.setCurrentClasses()
   }
 
+  onSelect(select: Hero): void {
+    this.selectedHero = select;
+  }
+
+  onChange(value) {
+    console.log(this.condition1,
+      this.condition2,
+      this.condition3)
+      this.setCurrentClasses()
+  }
+  setCurrentClasses() {
+    this.currentClasses = {
+      'className1': this.condition1,
+      'className2': this.condition2,
+      'className3': this.condition3
+    }
+  }
 }

@@ -254,3 +254,58 @@ export const HEROES: Hero[] = [
 </ul>
 ```
 
+>新需求：当用户点击主列表英雄时，组件底部显示所选英雄的详情
+
+添加click事件绑定
+```html
+<li *ngFor="let hero of heroes" (click)="onSelect(hero)">
+```
+`onSelect`是HeroesComponent上的一个方法，嘿伙计，我觉得你会搞定它的，写吧
+`heroes.component.ts`
+```ts
+selectedHero: Hero;
+onSelect(hero: Hero): void {
+  this.selectedHero = hero;
+}
+```
+给模板添加选中的hero显示
+```html
+<h2>{{selectedHero.name | uppercase}} Details</h2>
+<div><span>id: </span>{{selectedHero.id}}</div>
+<div>
+  <label>name:
+    <input [(ngModel)]="selectedHero.name" placeholder="name">
+  </label>
+</div>
+```
+
+ok，当你觉得大功告成准备起身喝口咖啡时，Angular不想理你并抛给你一个异常
+```
+HeroesComponent.html:3 ERROR TypeError: Cannot read property 'name' of undefined
+```
+
+大概意思就是，html模板里面不能从一个`undefined`对象读取`name`属性，检查一下，就会知道，selectedHero在应用启动时是未定义的
+
+如何解决？
+
+修改模板，加上`*ngIf`条件指令，一切又变得美好起来
+```html
+<div *ngIf="selectedHero">
+  ...
+</div>
+```
+
+锦上添花，给选中的英雄加点样式，加上选中类名`[class.selected]="hero===selectedHero"`
+```html
+<li *ngFor="let hero of heroes"
+  [class.selected]="hero===selectedHero"
+  >
+  ...
+</li>
+```
+
+Angular的CSS类绑定机制语法
+```
+[class.some-css-class-name]="some-condition"
+```
+
