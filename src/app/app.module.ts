@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/Forms'
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 /**
  * @NgModule
@@ -27,7 +28,8 @@ import { HeroesComponent } from './heroes/heroes.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent
+    HeroesComponent,
+    HeroDetailComponent
   ],
   imports: [
     BrowserModule,

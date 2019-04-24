@@ -309,3 +309,25 @@ Angular的CSS类绑定机制语法
 [class.some-css-class-name]="some-condition"
 ```
 
+## 8. 子组件的使用
+目前来看，功能确实已经完善，但是有两个缺点
+- 英雄详情信息模块无法复用
+- 主组件代码越来越多
+
+类似其他框架的使用思路，这里我们同样使用英雄子组件来改造一下
+
+创建hero-detail组件
+```shell
+ng generate component hero-detail
+```
+这个命令做了这些事
+- 创建目录`src/app/hero-detail`
+- 生成组件样式文件
+- 生成组件模板文件
+- 存放组件类ts文件
+- 测试文件
+
+同时还会把`HeroDetailComponent`添加到`src/app/app.module.ts`文件的declarations列表中
+
+把原来的模板复制到`hero-detail.component.html`
+

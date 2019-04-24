@@ -22,15 +22,7 @@
       <span class="badge">{{item.id}}</span>{{item.name}}
     </li>
   </ul>
-  <div *ngIf="selectedHero">
-    <h2>{{selectedHero.name | uppercase}} 信息</h2>
-    <div><span>id: </span>{{selectedHero.id}}</div>
-    <div>
-      <label for="">name: 
-        <input [(ngModel)]="selectedHero.name" placeholder="name" >
-      </label>
-    </div>
-  </div>
+  <app-hero-detail [hero]="selectedHero"></app-hero-detail>
 </div>
 
 <input (change)="onChange()" type="checkbox" name="condition" id="" [(ngModel)]="condition1">className1
