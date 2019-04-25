@@ -3,6 +3,7 @@
 </p>
 
 <div class="wrapper">
+  <input type="text" [(ngModel)]="filterNumber" (change)="onChangeLimit()">
   <h2>{{hero.name | uppercase}} 信息</h2>
   <div><span>id: </span>{{hero.id}}</div>
   <div>
